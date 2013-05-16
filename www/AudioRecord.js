@@ -26,4 +26,7 @@ Media.prototype.startRecordWithSettings = function(options) {
 Media.prototype.stopRecordWithSettings = function() {
     Cordova.exec(null, null, "AudioRecord","stopAudioRecord", [this.id, this.src]);
 };
+
+Cordova.Media = Media;
+
 },false);
