@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.phonegap.plugins.barcodescanner"
+    version="0.3.1">
+  <name>AudioRecord</name>
+  <platform name="ios">
+    <asset src="www/AudioRecord.js" target="AudioRecord.js" />
+    <config-file target="config.xml" parent="plugins">
+      <plugin name="AudioRecord" value="AudioRecord" />
+    </config-file>
+    <header-file src="src/ios/AudioRecord.h" />
+    <source-file src="src/ios/AudioRecord.m" />
+  </platform>
+</plugin>
