@@ -13,7 +13,7 @@
 #ifdef CORDOVA_FRAMEWORK
 #import <Cordova/CDVSound.h>
 #else
-#import "CDVSound.h"
+#import "../../CordovaLib/Classes/CDVSound.h"
 #endif
 
 @interface AudioRecord : CDVSound <AVAudioRecorderDelegate> {
@@ -23,3 +23,4 @@
 - (void) stopAudioRecord:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
 @end
+

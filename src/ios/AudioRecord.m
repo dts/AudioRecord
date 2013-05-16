@@ -16,7 +16,7 @@
 	NSString* mediaId = [arguments objectAtIndex:1];
     
     //Use Super's audio file.
-	CDVAudioFile* audioFile = [super audioFileForResource:[arguments objectAtIndex:2] withId: mediaId];
+	CDVAudioFile* audioFile = [super audioFileForResource:[arguments objectAtIndex:2] withId: mediaId doValidation:YES forRecording:YES];
     NSString* jsString = nil;
     
     NSString* FormatIDString = [options objectForKey:@"FormatID"];
@@ -24,25 +24,24 @@
     //Default is LinearPCM
     NSNumber* FormatID = [NSNumber numberWithInt:kAudioFormatLinearPCM];
     
-    if(FormatIDString == @"kAudioFormatLinearPCM") {
+    if([FormatIDString isEqualToString:@"kAudioFormatLinearPCM"]) {
         FormatID = [NSNumber numberWithInt:kAudioFormatLinearPCM];
     }
-    else if(FormatIDString == @"kAudioFormatAppleLossless") {
+    else if([FormatIDString isEqualToString:@"kAudioFormatAppleLossless"]) {
         FormatID = [NSNumber numberWithInt:kAudioFormatAppleLossless];
     }
-    else if(FormatIDString == @"kAudioFormatAppleIMA4") {
+    else if([FormatIDString isEqualToString:@"kAudioFormatAppleIMA4"]) {
         FormatID = [NSNumber numberWithInt:kAudioFormatAppleIMA4];
     }
-    else if(FormatIDString == @"kAudioFormatiLBC") {
+    else if([FormatIDString isEqualToString:@"kAudioFormatiLBC"]) {
         FormatID = [NSNumber numberWithInt:kAudioFormatiLBC];
     }
-    else if(FormatIDString == @"kAudioFormatULaw") {
+    else if([FormatIDString isEqualToString:@"kAudioFormatULaw"]) {
         FormatID = [NSNumber numberWithInt:kAudioFormatULaw];
     }
-    else if(FormatIDString == @"kAudioFormatALaw") {
+    else if([FormatIDString isEqualToString:@"kAudioFormatALaw"]) {
         FormatID = [NSNumber numberWithInt:kAudioFormatALaw];
     }
-    
     
     NSNumber* SampleRate = [options objectForKey:@"SampleRate"];
     NSNumber* NumberOfChannels = [options objectForKey:@"NumberOfChannels"];
@@ -65,7 +64,6 @@
                         [NSNumber numberWithInt:0],AVLinearPCMIsBigEndianKey,
                         [NSNumber numberWithInt:0],AVLinearPCMIsFloatKey,
                         nil];
-        
         
 		// create a new recorder for each start record
 		audioFile.recorder = [[CDVAudioRecorder alloc] initWithURL:audioFile.resourceURL settings:recorderSettingsDict error:&error];
@@ -95,7 +93,7 @@
 	NSString* mediaId = [arguments objectAtIndex:1];
 
     //Use Super's soundCache
-	CDVAudioFile* audioFile = [super audioFileForResource:[arguments objectAtIndex:2] withId:mediaId];
+	CDVAudioFile* audioFile = [super audioFileForResource:[arguments objectAtIndex:2] withId:mediaId doValidation:YES forRecording:YES];
     NSString* jsString = nil;
 	
 	if (audioFile != nil && audioFile.recorder != nil) {
